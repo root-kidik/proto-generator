@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package proto.Hello2;
+
+import proto.../test_folder/Hello.hpp;
+import proto.../test_folder/Hello.hpp;
+import proto.../test_folder/Hello0.hpp;
+
+
+
+message QWE {
+    w
+    
+}
+

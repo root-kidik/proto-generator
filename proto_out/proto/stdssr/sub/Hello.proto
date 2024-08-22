@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+
+import "stdssr/sub/Hello0.proto";
+
+
+
+
+message stdssr_Some {
+    int32 q = 0; 
+    int32 b = 1; 
+    stdssr_QWERTTY ty = 2; 
+    
+}
+
+message stdssr2_Q {
+    stdssr_Some wteryrtrut = 0; 
+    int32 h = 1; 
+    string w = 2; 
+    int32 w3 = 3; 
+    int32 w2 = 4; 
+    uint32 tytu = 5; 
+    
+}
+

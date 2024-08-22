@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package proto;
+
+import "stdssr/sub/Hello.proto";
+
+
+
+
+message stdssr_QWE {
+    stdssr_Some w = 0; 
+    
+}
+

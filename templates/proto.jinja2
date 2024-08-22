@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+{% for visited_struct in translation_unit.visited_structs -%}
+import "{{visited_struct.source_path | replace(".hpp", ".proto") | replace(".h", ".proto")}}";
+{% endfor %}
+
+
+{% for struct in translation_unit.structs %}
+message {{struct.proto_type}} {
+    {% for field in struct.fields -%}
+{{field.proto_type}} {{field.name}} = {{loop.index0}}; 
+    {% endfor %}
+}
+{% endfor %}

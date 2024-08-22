@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package proto;
+
+
+
+
+
+message stdssr_QWERTTY {
+    
+}
+

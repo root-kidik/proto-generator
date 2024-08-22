@@ -1,0 +1,9 @@
+[submodule "libs/inja"]
+	path = libs/inja
+	url = https://github.com/pantor/inja.git
+[submodule "libs/Jinja2CppLight"]
+	path = libs/Jinja2CppLight
+	url = git@github.com:hughperkins/Jinja2CppLight.git
+[submodule "Jinja2Cpp"]
+	path = Jinja2Cpp
+	url = git@github.com:jinja2cpp/Jinja2Cpp.git

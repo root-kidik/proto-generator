@@ -1,0 +1,40 @@
+#pragma once
+
+#include <{{translation_unit.source_path}}>
+#include <{{translation_unit.source_path | replace (".hpp", "") | replace(".h", "")}}.pb.h> 
+
+{% for visited_struct in translation_unit.visited_structs %}
+#include <{{visited_struct.source_path}}>
+#include <{{visited_struct.source_path | replace(".hpp", ".pb.converter.inl")}}> 
+{% endfor %}
+
+namespace proto
+{
+
+{% for struct in translation_unit.structs %}
+inline {{struct.cpp_qualified_type}} convert({{struct.proto_type}}&& dto)
+{
+    {{struct.cpp_qualified_type}} object; 
+    {% for field in struct.fields %}
+        {% if field.is_trivial_proto_type %}
+    object.{{field.name}} = std::move(dto.get_{{field.name}}());
+        {% else %}
+    object.{{field.name}} = convert(std::move(*dto.mutable_{{field.name}}()));
+        {% endif %}
+    {% endfor %}
+}
+
+inline {{struct.proto_type}} convert({{struct.cpp_qualified_type}}&& object)
+{
+    {{struct.proto_type}} dto;
+    {% for field in struct.fields %}
+        {% if field.is_trivial_proto_type %}
+    dto.set_{{field.name}}(object.{{field.name}});
+        {% else %}
+    *dto.mutable_{{field.name}}() = convert(std::move(object.{{field.name}}));
+        {% endif %}
+    {% endfor %}
+}
+{% endfor %}
+
+}
